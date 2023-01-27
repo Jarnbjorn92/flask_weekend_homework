@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>{{ title }} - My Library</title>
+    </head>
+    <body>
+        <h1>Books List</h1>
+
+        <form action="/books" method="post">
+            <label for="title">Book Title</label>
+            <input type="text" name="title" id="title">
+
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author">
+
+            <label for="genre">Genre</label>
+            <select name="genre" id="genre">
+                <option value="">--Please choose an option--</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="biography">Biography</option>
+                <option value="historical">Historical</option>
+                <option value="romance">Romance</option>
+                <option value="non-fiction">Non-Fiction</option>
+            </select>
+            <input type="submit" value="Add Book">
+        </form>
+        
+    <hr>
+    <h3>Book List:</h3>
+    {% for book in books %}  
+    <div>
+        <p>
+            <b><a href="/books/{{ loop.index }}">{{ book.title }}</a></b> by {{ book.author }}, {{ book.genre }}.
+        </p>
+        </div>
+    {% endfor %}
+    </body>
+</html>
