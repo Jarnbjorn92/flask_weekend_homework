@@ -30,7 +30,7 @@
     {% for book in books %}  
     <div>
         <p>
-            <b><a href="/books/{{ loop.index }}">{{ book.title }}</a></b> by {{ book.author }}, {{ book.genre }}.
+            <b><a href="/books/{{ books.index(book) }}">{{ book.title }}</a></b> by {{ book.author }}, {{ book.genre }}.
         </p>
         </div>
     {% endfor %}
