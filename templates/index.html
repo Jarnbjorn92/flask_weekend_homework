@@ -1,5 +1,6 @@
 <html>
     <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
         <title>{{ title }} - My Library</title>
     </head>
     <body>
@@ -24,15 +25,21 @@
             </select>
             <input type="submit" value="Add Book">
         </form>
-        
+        <div>
+        </div>
     <hr>
     <h3>Book List:</h3>
     {% for book in books %}  
+    <form action="/books/delete/{{ books.index(book) }}" method="post">
     <div>
         <p>
             <b><a href="/books/{{ books.index(book) }}">{{ book.title }}</a></b> by {{ book.author }}, {{ book.genre }}.
+            <input type="checkbox" name="delete" id="delete">
+            <input type="submit" value="Delete">
         </p>
-        </div>
+    </div>
+    </form>
+    </div>
     {% endfor %}
     </body>
 </html>
